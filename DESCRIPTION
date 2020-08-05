@@ -1,19 +1,16 @@
-Package: template.project
+Package: house.prices
 Type: Package
-Title: R Project Template for Analytic Applications
-URL: https://data-science-competitions.github.io/template.project/
-BugReports: https://github.com/data-science-competitions/template.project/issues
-Version: 1.1.1
+Title: Predict Sales Prices and Practice Feature Engineering, RFs, and Gradient Boosting
+URL: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
+BugReports: https://github.com/data-science-competitions/Kaggle-House-Prices/issues
+Version: 0.0.1
 Date: 2020-04-24
 Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
-Description: This template conforms to a conceptual model of **Analysis Projects** suggested by [Hadley Wickham](https://docs.google.com/document/d/1LzZKS44y4OEJa4Azg5reGToNAZL0e0HSUwxamNY7E-Y/).  
-    Using this template reduces:  
-    * Unnecessary variance between projects configurations; and  
-    * Development time spent on making a barebone project working for the first time.    
-    This is possible as the boilerplate comes with:    
-    * Fully configured test-suite, including code-coverage; and  
-    * Fully configured continuous-integration (CI) script for Travis.
+Description: The house prices competition serves as a playground for data 
+    scientists to hone their skills. The goal of the competition is to predict 
+    sales prices for 1,459 houses. The competition features a dataset with more 
+    than 150 identifiable house attributes, termed amenities.  
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
