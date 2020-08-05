@@ -1,13 +1,15 @@
 
-# `house.prices` <img src='https://i.imgur.com/cLcAYfz.png' align="right" height="50"/>
+# `house.prices` <img src='https://i.imgur.com/oAhNm5T.png' align="right" height="50"/>
 
 <!-- badges: start -->
 
+[![continuous-integration](https://travis-ci.org/.svg?branch=master)](https://travis-ci.org/)
+[![code-coverage](https://codecov.io/gh//branch/master/graph/badge.svg)](https://codecov.io/github//?branch=master)
 <!-- badges: end -->
 
 ## Predict Sales Prices and Practice Feature Engineering, RFs, and Gradient Boosting
 
-<img src="https://i.imgur.com/RLEQkhe.png" width="75%" style="display: block; margin: auto;" />
+<img src="https://i.imgur.com/wSH8PZJ.png" width="100%" style="display: block; margin: auto;" />
 
 ## Overview
 

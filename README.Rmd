@@ -36,7 +36,7 @@ badges$covr <- list(
 invisible(lapply(badges, do.call, what = usethis::use_badge))
 ```
 
-# ``r DESCRIPTION$get_field("Package")`` <img src='https://i.imgur.com/cLcAYfz.png' align="right" height="50"/>
+# ``r DESCRIPTION$get_field("Package")`` <img src='https://i.imgur.com/oAhNm5T.png' align="right" height="50"/>
 
 <!-- badges: start -->
 [![continuous-integration](https://travis-ci.org/.svg?branch=master)](https://travis-ci.org/)
@@ -46,8 +46,8 @@ invisible(lapply(badges, do.call, what = usethis::use_badge))
 `r DESCRIPTION$get_field("Title")`
 ---
 
-```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("https://i.imgur.com/RLEQkhe.png")
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://i.imgur.com/wSH8PZJ.png")
 ```
 
 ## Overview
