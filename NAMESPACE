@@ -2,4 +2,3 @@
 
 export(Docker)
 export(DockerCompose)
-export(foo)
