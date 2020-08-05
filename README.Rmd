@@ -39,8 +39,8 @@ invisible(lapply(badges, do.call, what = usethis::use_badge))
 # ``r DESCRIPTION$get_field("Package")`` <img src='https://i.imgur.com/cLcAYfz.png' align="right" height="50"/>
 
 <!-- badges: start -->
-[![continuous-integration](https://travis-ci.org/data-science-competitions/template.project.svg?branch=master)](https://travis-ci.org/data-science-competitions/template.project)
-[![code-coverage](https://codecov.io/gh/data-science-competitions/template.project/branch/master/graph/badge.svg)](https://codecov.io/github/data-science-competitions/template.project/?branch=master)
+[![continuous-integration](https://travis-ci.org/.svg?branch=master)](https://travis-ci.org/)
+[![code-coverage](https://codecov.io/gh//branch/master/graph/badge.svg)](https://codecov.io/github//?branch=master)
 <!-- badges: end -->
 
 `r DESCRIPTION$get_field("Title")`
