@@ -1,5 +1,16 @@
-version: "3.8"
 services:
+  ######################################################
+  # MLflow
+  ######################################################
+  mlflow:
+    image: mlflow:1.10.0
+    build:
+      context: ./
+      dockerfile: ./.app/docker/mlflow/Dockerfile
+    container_name: mlflow
+    ports:
+      - 5050:80
+    restart: "no"
   ######################################################
   # R
   ######################################################
@@ -12,6 +23,8 @@ services:
         - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
     container_name: r-package-test-rig
     restart: always
+   #####################################################
+version: "3.8"
 networks:
   default:
-    name: r-ver
+    name: ml-dev
