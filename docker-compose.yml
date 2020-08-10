@@ -17,15 +17,17 @@ services:
   mlflow:
     image: modelflow:4.0.0
     build:
-      context: ./
-      dockerfile: ./.app/docker/modelflow/Dockerfile
+      context: ./.app/docker/modelflow
       args:
         - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
         - METAFLOW_VER='2.2.0'
         - MLFLOW_VER='1.8.0'
     container_name: modelflow
+    volumes:
+      - ./inst/mlflow/files:/opt/mlflow/files
+      - ./inst/mlflow/artifacts:/opt/mlflow/artifacts
     ports:
-      - 5050:80
+      - 5050:5050
     restart: "no"
   ####################################################
 version: "3.8"
