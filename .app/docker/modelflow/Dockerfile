@@ -34,4 +34,15 @@ RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
 RUN R -q -e "mlflow::install_mlflow(python_version = '3.8.5')"
 
 # Run --------------------------------------------------------------------------
-#RUN trap : TERM INT && tail -f /dev/null & wait
+ENV MLFLOW_HOME opt/mlflow
+ENV MLFLOW_HOST 0.0.0.0
+ENV MLFLOW_PORT 5050
+ENV MLFLOW_FILE ${MLFLOW_HOME}/files
+ENV MLFLOW_ARTIFACT ${MLFLOW_HOME}/artifacts
+
+RUN mkdir -p ${MLFLOW_HOME}
+COPY scripts/mlflow-server.sh ${MLFLOW_HOME}/mlflow-server.sh
+RUN chmod +x ${MLFLOW_HOME}/mlflow-server.sh
+
+WORKDIR ${MLFLOW_HOME}
+ENTRYPOINT ["/mlflow-server.sh"]
