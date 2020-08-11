@@ -36,4 +36,3 @@ self %>%
     calculate_metrics() %>%
     log_metrics()
 # Model Evaluated ---------------------------------------------------------
-
