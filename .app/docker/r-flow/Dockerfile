@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python ---------------------------------------------------------------
 ARG PYTHON_VER=3.7
-RUN apt-get update && apt-get -y install python${PYTHON_VER} && \
+RUN apt-get update && apt-get -y install python3.7 && \
     apt-get -y install python3-pip
 RUN pip3 install virtualenv && pip3 install requests
 
