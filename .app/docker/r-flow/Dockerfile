@@ -11,22 +11,28 @@ RUN apt-get update && apt-get install -y \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install Python ---------------------------------------------------------------
+ARG PYTHON_VER=3.7
+RUN apt-get update && apt-get -y install python${PYTHON_VER} && \
+    apt-get -y install python3-pip
+RUN pip3 install virtualenv && pip3 install requests
+
 # Configure RStudio Server -----------------------------------------------------
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
-RUN R -q -e "remotes::install_cran('renv')"
+RUN R -q -e "remotes::install_cran(c('profvis', 'renv'))"
 RUN R -q -e "remotes::install_cran(c('devtools', 'testthat', 'covr', 'roxygen2'))"
-
-# Install Python ---------------------------------------------------------------
-RUN apt-get update && apt-get -y install python3.7 && \
-    apt-get -y install python3-pip
-RUN pip3 install virtualenv && pip3 install requests
 
 # Install Metaflow -------------------------------------------------------------
 ARG METAFLOW_VER='2.2.0'
 RUN R -q -e "remotes::install_github('Netflix/metaflow', ${METAFLOW_VER}, 'R')"
 RUN R -q -e "metaflow::install(user_install = FALSE, upgrade = FALSE)"
+
+# Install MLflow ---------------------------------------------------------------
+ARG MLFLOW_VER='1.8.0'
+RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
+#RUN R -q -e "mlflow::install_mlflow(python_version = '${PYTHON_VER}')"
 
 # Install Project Dependencies -------------------------------------------------
 COPY ./DESCRIPTION ./DESCRIPTION
