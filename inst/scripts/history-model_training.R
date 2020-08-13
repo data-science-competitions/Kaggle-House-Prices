@@ -1,6 +1,10 @@
 pkgload::load_all(export_all = FALSE, helpers = FALSE)
 add_function <- function(name, module = NULL){
     is.not.null <- Negate(is.null)
+    `%||%` <- function(a,b) if(is.null(a)) b else a
+
+    module %||% 2
+    3 %||% 2
     glue <- stringr::str_glue
     slug <- paste0("fct_", name)
     slug <- if(is.not.null(module)) paste0("mod_", module, "_", slug)
@@ -12,6 +16,7 @@ add_function <- function(name, module = NULL){
         #' @description `{fct_name}` is an amazing function
         #' @param self (`environment`) A shared environment.
         #' @return self
+        #' @family {module}
         #' @export
         {fct_name} <- function(self) {{
             # Assertions ...
@@ -22,7 +27,7 @@ add_function <- function(name, module = NULL){
 
             # Return
             invisible(self)
-        }}", fct_name = name, month = sample(month.abb, 1)),
+        }}", fct_name = name, module = module %||% "", month = sample(month.abb, 1)),
         usethis::proj_path("R", slug, ext = "R")
     )
 

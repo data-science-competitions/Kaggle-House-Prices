@@ -2,13 +2,14 @@
 #' @description `train_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family mdl
 #' @export
 train_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jun'
+    self$month <- 'Sep'
 
     # Return
     invisible(self)

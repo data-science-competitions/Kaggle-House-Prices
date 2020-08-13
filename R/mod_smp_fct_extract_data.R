@@ -2,6 +2,7 @@
 #' @description `extract_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family smp
 #' @export
 extract_data <- function(self) {
     # Assertions ...

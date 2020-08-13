@@ -2,13 +2,14 @@
 #' @description `ingest_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family dao
 #' @export
 ingest_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jan'
+    self$month <- 'Apr'
 
     # Return
     invisible(self)

@@ -2,13 +2,14 @@
 #' @description `split_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family smp
 #' @export
 split_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Apr'
+    self$month <- 'Mar'
 
     # Return
     invisible(self)

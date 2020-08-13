@@ -2,13 +2,14 @@
 #' @description `store_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family dao
 #' @export
 store_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Aug'
+    self$month <- 'Jan'
 
     # Return
     invisible(self)

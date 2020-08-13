@@ -2,13 +2,14 @@
 #' @description `create_experiment` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family ns
 #' @export
 create_experiment <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Oct'
+    self$month <- 'Jul'
 
     # Return
     invisible(self)
