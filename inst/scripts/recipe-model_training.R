@@ -1,7 +1,9 @@
 # configure session -------------------------------------------------------
 pkgload::load_all(export_all = FALSE, helpers = FALSE)
 self <- new.env()
-self %>% create_experiment()
+self %>%
+    get_configurations() %>%
+    create_experiment()
 # session configured ------------------------------------------------------
 
 

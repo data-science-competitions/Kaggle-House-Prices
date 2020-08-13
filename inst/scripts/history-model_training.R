@@ -51,7 +51,7 @@ add_function <- function(name, module = NULL){
 
 
 # configure session -------------------------------------------------------
-# add_function("load_package", "ns")
+add_function("get_configurations", "ns")
 add_function("create_experiment", "ns")
 # session configured ------------------------------------------------------
 
