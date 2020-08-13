@@ -37,8 +37,8 @@ RUN R -q -e "metaflow::install(user_install = FALSE, upgrade = FALSE)"
 ARG MLFLOW_VER='1.8.0'
 ARG MLFLOW_URI=\'/home/rstudio/.local/share/mlflow\'
 RUN echo "MLFLOW_CONDA_HOME=$MINICONDA_PATH" >> .Renviron && \
-         "MLFLOW_URI=$MLFLOW_URI" >> .Renviron && \
-         "MLFLOW_VER=$MLFLOW_VER" >> .Renviron
+    echo "MLFLOW_URI=$MLFLOW_URI" >> .Renviron && \
+    echo "MLFLOW_VER=$MLFLOW_VER" >> .Renviron
 RUN mkdir -p ${MLFLOW_URI}
 RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
 RUN R -q -e "mlflow::install_mlflow(python_version = '${PYTHON_VER}')"
