@@ -6,7 +6,7 @@ desktop.ini
 .Rapp.history
 
 # roxygen2
-/man/
+/man/*
 
 # Session Data files
 .RData
@@ -14,6 +14,7 @@ desktop.ini
 inst/CONFIGURATION
 
 # Data Files
+*.zip
 *.csv
 *.rds
 *.xlsx
@@ -50,12 +51,8 @@ figure-html/
 *.utf8.md
 *.knit.md
 
-# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
-rsconnect/
-.Rproj.user
-temp/
-
 # pkgdown
 /docs/*
 /.idea/*
 /renv/*
+mlruns/
