@@ -20,6 +20,7 @@ RUN pip3 install virtualenv && pip3 install requests
 # Configure RStudio Server -----------------------------------------------------
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
 ARG MINICONDA_PATH=\'/home/rstudio/.local/share/r-miniconda\'
+RUN echo "MINICONDA_PATH=$MINICONDA_PATH" >> .Renviron
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
 RUN R -q -e "remotes::install_cran(c('profvis', 'renv', 'reticulate'))"
@@ -28,34 +29,28 @@ RUN R -q -e "try(reticulate::install_miniconda(${MINICONDA_PATH}, update = FALSE
 
 # Install Metaflow -------------------------------------------------------------
 ARG METAFLOW_VER='2.2.0'
+RUN echo "METAFLOW_VER=$METAFLOW_VER" >> .Renviron
 RUN R -q -e "remotes::install_github('Netflix/metaflow', ${METAFLOW_VER}, 'R')"
 RUN R -q -e "metaflow::install(user_install = FALSE, upgrade = FALSE)"
 
 # Install MLflow ---------------------------------------------------------------
 ARG MLFLOW_VER='1.8.0'
 ARG MLFLOW_URI=\'/home/rstudio/.local/share/mlflow\'
-RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
-RUN echo "MLFLOW_CONDA_HOME=$MINICONDA_PATH" >> .Renviron
-RUN echo "MLFLOW_URI=$MLFLOW_URI" >> .Renviron
-RUN echo "MLFLOW_VER=$MLFLOW_VER" >> .Renviron
-
+RUN echo "MLFLOW_CONDA_HOME=$MINICONDA_PATH" >> .Renviron && \
+         "MLFLOW_URI=$MLFLOW_URI" >> .Renviron && \
+         "MLFLOW_VER=$MLFLOW_VER" >> .Renviron
 RUN mkdir -p ${MLFLOW_URI}
-#RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
-#RUN R -q -e "mlflow::install_mlflow(python_version = '${PYTHON_VER}')"
+RUN R -q -e "remotes::install_version('mlflow', ${MLFLOW_VER})"
+RUN R -q -e "mlflow::install_mlflow(python_version = '${PYTHON_VER}')"
 
 # Install Project Dependencies -------------------------------------------------
 COPY ./DESCRIPTION ./DESCRIPTION
-#RUN R -q -e "remotes::install_deps(dependencies = 'Depends')"
-#RUN R -q -e "remotes::install_deps(dependencies = 'Imports')"
-#RUN R -q -e "remotes::install_deps(dependencies = 'Suggests')"
+RUN R -q -e "remotes::install_deps(dependencies = 'Depends')"
+RUN R -q -e "remotes::install_deps(dependencies = 'Imports')"
+RUN R -q -e "remotes::install_deps(dependencies = 'Suggests')"
 
 # Run RStudio Server -----------------------------------------------------------
-## Export environ variables to docker container
-RUN echo '#!/bin/execlineb -S0' > exports && \
-    printf "export %s %s\n" $(cat .Renviron | sed "s/=/ /") >> exports && \
-    cat init | sed 1d >> exports && \
-    cp -f exports ./init
-#RUN rm -f .Renviron .Rprofile DESCRIPTION
+RUN mv .Renviron home/rstudio/
 RUN chown rstudio:rstudio home/rstudio/
 ENV PASSWORD 1234
 ENV ROOT true
