@@ -3,8 +3,8 @@
 
 <!-- badges: start -->
 
-[![continuous-integration](https://travis-ci.org/.svg?branch=master)](https://travis-ci.org/)
-[![code-coverage](https://codecov.io/gh//branch/master/graph/badge.svg)](https://codecov.io/github//?branch=master)
+[![continuous-integration](https://travis-ci.org/data-science-competitions/Kaggle-House-Prices.svg?branch=master)](https://travis-ci.org/data-science-competitions/Kaggle-House-Prices)
+[![code-coverage](https://codecov.io/gh/data-science-competitions/Kaggle-House-Prices/branch/master/graph/badge.svg)](https://codecov.io/github/data-science-competitions/Kaggle-House-Prices/?branch=master)
 <!-- badges: end -->
 
 ## Predict Sales Prices and Practice Feature Engineering, RFs, and Gradient Boosting
