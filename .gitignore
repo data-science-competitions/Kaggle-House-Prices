@@ -55,3 +55,4 @@ figure-html/
 /docs/*
 /.idea/*
 /renv/*
+mlruns/
