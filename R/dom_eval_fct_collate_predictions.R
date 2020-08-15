@@ -2,14 +2,14 @@
 #' @description `collate_predictions` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family eval
+#' @family eval subdomain
 #' @export
 collate_predictions <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jul'
+    self$month <- 'May'
 
     # Return
     invisible(self)

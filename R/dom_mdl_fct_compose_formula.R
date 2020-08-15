@@ -2,14 +2,14 @@
 #' @description `compose_formula` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family mdl
+#' @family mdl subdomain
 #' @export
 compose_formula <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'May'
+    self$month <- 'Apr'
 
     # Return
     invisible(self)

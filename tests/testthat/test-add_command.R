@@ -8,10 +8,11 @@ testthat::setup({
 })
 
 # Create R script ---------------------------------------------------------
-test_that("given name and module, then add_command creates a new R script", {
+test_that("given name and subdomain, then add_command creates a new R script", {
+    `%+%` <- base::paste0
     name <- "bilbo"
-    module <- "baggins"
-    path <- usethis::proj_path("R", paste("mod", module, "fct", name, sep = "_"), ext = "R")
-    expect_silent(add_command(name, module))
+    subdomain <- "baggins"
+    path <- usethis::proj_path("R", ("dom" %+% "_" %+% subdomain) %+% "_" %+% ("fct" %+% "_" %+% name), ext = "R")
+    expect_silent(add_command(name, subdomain))
     expect_file_exists(path)
 })

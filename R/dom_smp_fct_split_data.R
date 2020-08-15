@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `log_params` is an amazing function
+#' @description `split_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family mdl
+#' @family smp subdomain
 #' @export
-log_params <- function(self) {
+split_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'Feb'
 
     # Return
     invisible(self)

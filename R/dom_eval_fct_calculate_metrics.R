@@ -1,10 +1,10 @@
 #' @title What the Function Does
-#' @description `extract_data` is an amazing function
+#' @description `calculate_metrics` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family smp
+#' @family eval subdomain
 #' @export
-extract_data <- function(self) {
+calculate_metrics <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 

@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `train_model` is an amazing function
+#' @description `save_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family mdl
+#' @family mdl subdomain
 #' @export
-train_model <- function(self) {
+save_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'Nov'
 
     # Return
     invisible(self)

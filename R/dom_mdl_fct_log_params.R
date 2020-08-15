@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `calculate_metrics` is an amazing function
+#' @description `log_params` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family eval
+#' @family mdl subdomain
 #' @export
-calculate_metrics <- function(self) {
+log_params <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jul'
+    self$month <- 'Aug'
 
     # Return
     invisible(self)

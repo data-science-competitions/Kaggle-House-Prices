@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `ingest_data` is an amazing function
+#' @description `log_metrics` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family dao
+#' @family eval subdomain
 #' @export
-ingest_data <- function(self) {
+log_metrics <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Apr'
+    self$month <- 'Aug'
 
     # Return
     invisible(self)

@@ -2,14 +2,14 @@
 #' @description `predict_test_set` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family eval
+#' @family eval subdomain
 #' @export
 predict_test_set <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jan'
+    self$month <- 'Dec'
 
     # Return
     invisible(self)

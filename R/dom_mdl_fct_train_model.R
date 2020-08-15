@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `get_configurations` is an amazing function
+#' @description `train_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family ns
+#' @family mdl subdomain
 #' @export
-get_configurations <- function(self) {
+train_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Dec'
+    self$month <- 'Jan'
 
     # Return
     invisible(self)

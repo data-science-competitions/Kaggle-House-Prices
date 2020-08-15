@@ -1,20 +1,22 @@
 #' @title Add Command
 #' @param name (`character`) Command name.
-#' @param module (`character`) Command module.
+#' @param subdomain (`character`) Command subdomain name.
 #' @family DDD
 #' @export
-add_command <- function(name, module){
+add_command <- function(name, subdomain){
 
-    .add_command_script(name, module)
-    .add_command_test(name, module)
+    .add_command_script(name, subdomain)
+    .add_command_test(name, subdomain)
 
     invisible()
 }
 
 # Low-level functions -----------------------------------------------------
-.add_command_script <- function(name, module){
+#' @keywords internal
+#' @noRd
+.add_command_script <- function(name, subdomain){
     `%||%` <- function(a,b) if(is.null(a)) b else a
-    slug <- .add_command_slug(name, module)
+    slug <- .add_command_slug(name, subdomain)
     dir.create(usethis::proj_path("R"), recursive = TRUE, showWarnings = FALSE)
     writeLines(
         stringr::str_glue("
@@ -22,7 +24,7 @@ add_command <- function(name, module){
         #' @description `{fct_name}` is an amazing function
         #' @param self (`environment`) A shared environment.
         #' @return self
-        #' @family {module}
+        #' @family {subdomain} subdomain
         #' @export
         {fct_name} <- function(self) {{
             # Assertions ...
@@ -33,13 +35,13 @@ add_command <- function(name, module){
 
             # Return
             invisible(self)
-        }}", fct_name = name, module = module %||% "", month = sample(month.abb, 1)),
+        }}", fct_name = name, subdomain = subdomain %||% "", month = sample(month.abb, 1)),
         usethis::proj_path("R", slug, ext = "R")
     )
     invisible()
 }
 
-.add_command_test <- function(name, module){
+.add_command_test <- function(name, subdomain){
     dir.create(usethis::proj_path("tests", "testthat"), recursive = TRUE, showWarnings = FALSE)
     writeLines(
         stringr::str_glue("
@@ -61,9 +63,11 @@ add_command <- function(name, module){
     invisible()
 }
 
-.add_command_slug <- function(name, module){
+.add_command_slug <- function(name, subdomain){
     is.not.null <- Negate(is.null)
-    slug <- paste0("fct_", name)
-    slug <- if(is.not.null(module)) paste0("mod_", module, "_", slug)
+    `%+%` <- base::paste0
+
+    slug <- "fct" %+% "_" %+% name
+    slug <- if(is.not.null(subdomain)) "dom" %+% "_" %+% subdomain %+% "_" %+% slug
     return(slug)
 }
