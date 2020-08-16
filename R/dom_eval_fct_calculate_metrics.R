@@ -9,7 +9,7 @@ calculate_metrics <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'Feb'
 
     # Return
     invisible(self)

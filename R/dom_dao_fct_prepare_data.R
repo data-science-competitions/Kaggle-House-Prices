@@ -9,7 +9,7 @@ prepare_data <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'Jun'
 
     # Return
     invisible(self)

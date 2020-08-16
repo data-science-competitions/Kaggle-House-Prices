@@ -9,7 +9,7 @@ ingest_data <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'May'
 
     # Return
     invisible(self)

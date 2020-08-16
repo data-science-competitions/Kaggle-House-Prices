@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `predict_test_set` is an amazing function
+#' @description `fit_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
-#' @family eval subdomain
+#' @family mdl subdomain
 #' @export
-predict_test_set <- function(self) {
+fit_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Dec'
+    self$month <- 'Jan'
 
     # Return
     invisible(self)

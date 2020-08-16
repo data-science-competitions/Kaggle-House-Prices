@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `log_params` is an amazing function
+#' @description `initialize_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
 #' @family mdl subdomain
 #' @export
-log_params <- function(self) {
+initialize_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Aug'
+    self$month <- 'Feb'
 
     # Return
     invisible(self)

@@ -9,7 +9,7 @@ log_metrics <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Aug'
+    self$month <- 'Nov'
 
     # Return
     invisible(self)

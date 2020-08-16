@@ -1,15 +1,15 @@
 #' @title What the Function Does
-#' @description `compose_formula` is an amazing function
+#' @description `finalize_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
 #' @family mdl subdomain
 #' @export
-compose_formula <- function(self) {
+finalize_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Apr'
+    self$month <- 'Jul'
 
     # Return
     invisible(self)

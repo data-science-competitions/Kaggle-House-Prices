@@ -9,7 +9,7 @@ store_data <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'May'
+    self$month <- 'Mar'
 
     # Return
     invisible(self)

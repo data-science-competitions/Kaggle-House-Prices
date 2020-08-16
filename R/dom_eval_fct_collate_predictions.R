@@ -9,7 +9,7 @@ collate_predictions <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'May'
+    self$month <- 'Jan'
 
     # Return
     invisible(self)

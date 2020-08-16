@@ -9,7 +9,7 @@ split_data <- function(self) {
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Feb'
+    self$month <- 'Apr'
 
     # Return
     invisible(self)
