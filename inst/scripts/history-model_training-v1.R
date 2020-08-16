@@ -27,10 +27,9 @@ add_command("save_model", "mdl")
 # model fitted ------------------------------------------------------------
 
 
-# Evaluate Model ----------------------------------------------------------
+# evaluate Model ----------------------------------------------------------
 add_command("predict_test_set", "eval")
 add_command("collate_predictions", "eval")
 add_command("calculate_metrics", "eval")
 add_command("log_metrics", "eval")
-# Model Evaluated ---------------------------------------------------------
-
+# model Evaluated ---------------------------------------------------------
