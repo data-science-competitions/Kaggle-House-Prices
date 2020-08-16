@@ -11,6 +11,8 @@ add_command <- function(name, subdomain){
     invisible()
 }
 
+# Low-lever Functions -----------------------------------------------------
+#' @noRd
 .add_command_script <- function(name, subdomain){
     `%||%` <- function(a,b) if(is.null(a)) b else a
     slug <- .add_command_slug(name, subdomain)
@@ -37,8 +39,6 @@ add_command <- function(name, subdomain){
     )
     invisible()
 }
-
-# Low-lever Functions -----------------------------------------------------
 .add_command_test <- function(name, subdomain){
     dir.create(usethis::proj_path("tests", "testthat"), recursive = TRUE, showWarnings = FALSE)
     slug <- .add_command_slug(name, subdomain)
