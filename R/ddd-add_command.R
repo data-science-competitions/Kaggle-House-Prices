@@ -11,8 +11,7 @@ add_command <- function(name, subdomain){
     invisible()
 }
 
-# Low-level functions -----------------------------------------------------
-#' @keywords internal
+# Low-lever Functions -----------------------------------------------------
 #' @noRd
 .add_command_script <- function(name, subdomain){
     `%||%` <- function(a,b) if(is.null(a)) b else a
@@ -22,27 +21,27 @@ add_command <- function(name, subdomain){
         stringr::str_glue("
         #' @title What the Function Does
         #' @description `{fct_name}` is an amazing function
-        #' @param self (`environment`) A shared environment.
-        #' @return self
+        #' @param session (`environment`) A shared environment.
+        #' @return session
         #' @family {subdomain} subdomain
         #' @export
-        {fct_name} <- function(self) {{
+        {fct_name} <- function(session) {{
             # Assertions ...
-            stopifnot(is.environment(self))
+            stopifnot(is.environment(session))
 
             # Code ...
-            self$month <- '{month}'
+            session$month <- '{month}'
 
             # Return
-            invisible(self)
+            invisible(session)
         }}", fct_name = name, subdomain = subdomain %||% "", month = sample(month.abb, 1)),
         usethis::proj_path("R", slug, ext = "R")
     )
     invisible()
 }
-
 .add_command_test <- function(name, subdomain){
     dir.create(usethis::proj_path("tests", "testthat"), recursive = TRUE, showWarnings = FALSE)
+    slug <- .add_command_slug(name, subdomain)
     writeLines(
         stringr::str_glue("
         context('unit test for {fct_name}')
@@ -58,7 +57,7 @@ add_command <- function(name, subdomain){
             expect_silent({fct_name}(test_env$self))
         }})
         ", fct_name = name),
-        usethis::proj_path("tests", "testthat", paste0("test-", name), ext = "R")
+        usethis::proj_path("tests", "testthat", paste0("test-", slug), ext = "R")
     )
     invisible()
 }
@@ -67,7 +66,7 @@ add_command <- function(name, subdomain){
     is.not.null <- Negate(is.null)
     `%+%` <- base::paste0
 
-    slug <- "fct" %+% "_" %+% name
-    slug <- if(is.not.null(subdomain)) "dom" %+% "_" %+% subdomain %+% "_" %+% slug
+    slug <- name
+    slug <- if(is.not.null(subdomain)) subdomain %+% "-" %+% slug
     return(slug)
 }

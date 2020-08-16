@@ -1,4 +1,4 @@
-context('unit test for train_model')
+context('unit test for finalize_model')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,6 +7,6 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('train_model works', {
-    expect_silent(train_model(test_env$self))
+test_that('finalize_model works', {
+    expect_silent(finalize_model(test_env$self))
 })

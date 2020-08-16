@@ -1,4 +1,4 @@
-context('unit test for log_params')
+context('unit test for initialize_model')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,6 +7,6 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('log_params works', {
-    expect_silent(log_params(test_env$self))
+test_that('initialize_model works', {
+    expect_silent(initialize_model(test_env$self))
 })

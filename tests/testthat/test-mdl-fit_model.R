@@ -1,4 +1,4 @@
-context('unit test for save_model')
+context('unit test for fit_model')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,6 +7,6 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('save_model works', {
-    expect_silent(save_model(test_env$self))
+test_that('fit_model works', {
+    expect_silent(fit_model(test_env$self))
 })

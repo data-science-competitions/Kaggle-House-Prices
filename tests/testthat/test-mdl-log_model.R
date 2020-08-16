@@ -1,4 +1,4 @@
-context('unit test for predict_test_set')
+context('unit test for log_model')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,6 +7,6 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('predict_test_set works', {
-    expect_silent(predict_test_set(test_env$self))
+test_that('log_model works', {
+    expect_silent(log_model(test_env$self))
 })

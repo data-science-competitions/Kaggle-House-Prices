@@ -1,4 +1,4 @@
-context('unit test for compose_formula')
+context('unit test for predict_model')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,6 +7,6 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('compose_formula works', {
-    expect_silent(compose_formula(test_env$self))
+test_that('predict_model works', {
+    expect_silent(predict_model(test_env$self))
 })
