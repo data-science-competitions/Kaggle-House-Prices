@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `ingest_data` is an amazing function
+#' @description `save_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family mdl subdomain
 #' @export
-ingest_data <- function(self) {
+save_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jan'
+    self$month <- 'Nov'
 
     # Return
     invisible(self)

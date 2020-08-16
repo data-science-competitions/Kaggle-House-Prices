@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `save_model` is an amazing function
+#' @description `get_configurations` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family ns subdomain
 #' @export
-save_model <- function(self) {
+get_configurations <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Aug'
+    self$month <- 'May'
 
     # Return
     invisible(self)

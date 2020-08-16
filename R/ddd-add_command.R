@@ -1,0 +1,73 @@
+#' @title Add Command
+#' @param name (`character`) Command name.
+#' @param subdomain (`character`) Command subdomain name.
+#' @family DDD
+#' @export
+add_command <- function(name, subdomain){
+
+    .add_command_script(name, subdomain)
+    .add_command_test(name, subdomain)
+
+    invisible()
+}
+
+# Low-level functions -----------------------------------------------------
+#' @keywords internal
+#' @noRd
+.add_command_script <- function(name, subdomain){
+    `%||%` <- function(a,b) if(is.null(a)) b else a
+    slug <- .add_command_slug(name, subdomain)
+    dir.create(usethis::proj_path("R"), recursive = TRUE, showWarnings = FALSE)
+    writeLines(
+        stringr::str_glue("
+        #' @title What the Function Does
+        #' @description `{fct_name}` is an amazing function
+        #' @param self (`environment`) A shared environment.
+        #' @return self
+        #' @family {subdomain} subdomain
+        #' @export
+        {fct_name} <- function(self) {{
+            # Assertions ...
+            stopifnot(is.environment(self))
+
+            # Code ...
+            self$month <- '{month}'
+
+            # Return
+            invisible(self)
+        }}", fct_name = name, subdomain = subdomain %||% "", month = sample(month.abb, 1)),
+        usethis::proj_path("R", slug, ext = "R")
+    )
+    invisible()
+}
+
+.add_command_test <- function(name, subdomain){
+    dir.create(usethis::proj_path("tests", "testthat"), recursive = TRUE, showWarnings = FALSE)
+    writeLines(
+        stringr::str_glue("
+        context('unit test for {fct_name}')
+
+        # Setup -------------------------------------------------------------------
+        testthat::setup({{
+            assign('test_env', testthat::test_env(), envir = parent.frame())
+            test_env$self <- new.env()
+        }})
+
+        # General -----------------------------------------------------------------
+        test_that('{fct_name} works', {{
+            expect_silent({fct_name}(test_env$self))
+        }})
+        ", fct_name = name),
+        usethis::proj_path("tests", "testthat", paste0("test-", name), ext = "R")
+    )
+    invisible()
+}
+
+.add_command_slug <- function(name, subdomain){
+    is.not.null <- Negate(is.null)
+    `%+%` <- base::paste0
+
+    slug <- "fct" %+% "_" %+% name
+    slug <- if(is.not.null(subdomain)) "dom" %+% "_" %+% subdomain %+% "_" %+% slug
+    return(slug)
+}

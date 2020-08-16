@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `predict_test_set` is an amazing function
+#' @description `log_params` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family mdl subdomain
 #' @export
-predict_test_set <- function(self) {
+log_params <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jun'
+    self$month <- 'Aug'
 
     # Return
     invisible(self)

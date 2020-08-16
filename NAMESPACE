@@ -2,11 +2,13 @@
 
 export(Docker)
 export(DockerCompose)
+export(add_command)
 export(calculate_metrics)
 export(collate_predictions)
 export(compose_formula)
 export(create_experiment)
 export(extract_data)
+export(get_configurations)
 export(ingest_data)
 export(log_metrics)
 export(log_params)

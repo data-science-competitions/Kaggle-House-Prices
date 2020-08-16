@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `create_experiment` is an amazing function
+#' @description `calculate_metrics` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family eval subdomain
 #' @export
-create_experiment <- function(self) {
+calculate_metrics <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Oct'
+    self$month <- 'Sep'
 
     # Return
     invisible(self)

@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `compose_formula` is an amazing function
+#' @description `collate_predictions` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family eval subdomain
 #' @export
-compose_formula <- function(self) {
+collate_predictions <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Sep'
+    self$month <- 'May'
 
     # Return
     invisible(self)

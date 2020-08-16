@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `train_model` is an amazing function
+#' @description `compose_formula` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family mdl subdomain
 #' @export
-train_model <- function(self) {
+compose_formula <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Jun'
+    self$month <- 'Apr'
 
     # Return
     invisible(self)

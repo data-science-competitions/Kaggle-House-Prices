@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `log_params` is an amazing function
+#' @description `prepare_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family dao subdomain
 #' @export
-log_params <- function(self) {
+prepare_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Feb'
+    self$month <- 'Sep'
 
     # Return
     invisible(self)

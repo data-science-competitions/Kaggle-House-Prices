@@ -1,14 +1,15 @@
 #' @title What the Function Does
-#' @description `split_data` is an amazing function
+#' @description `train_model` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family mdl subdomain
 #' @export
-split_data <- function(self) {
+train_model <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
     # Code ...
-    self$month <- 'Apr'
+    self$month <- 'Jan'
 
     # Return
     invisible(self)

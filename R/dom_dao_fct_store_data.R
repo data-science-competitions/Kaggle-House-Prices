@@ -1,9 +1,10 @@
 #' @title What the Function Does
-#' @description `log_metrics` is an amazing function
+#' @description `store_data` is an amazing function
 #' @param self (`environment`) A shared environment.
 #' @return self
+#' @family dao subdomain
 #' @export
-log_metrics <- function(self) {
+store_data <- function(self) {
     # Assertions ...
     stopifnot(is.environment(self))
 
