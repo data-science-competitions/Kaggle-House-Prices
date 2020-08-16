@@ -11,9 +11,6 @@ add_command <- function(name, subdomain){
     invisible()
 }
 
-# Low-level functions -----------------------------------------------------
-#' @keywords internal
-#' @noRd
 .add_command_script <- function(name, subdomain){
     `%||%` <- function(a,b) if(is.null(a)) b else a
     slug <- .add_command_slug(name, subdomain)
@@ -41,8 +38,10 @@ add_command <- function(name, subdomain){
     invisible()
 }
 
+# Low-lever Functions -----------------------------------------------------
 .add_command_test <- function(name, subdomain){
     dir.create(usethis::proj_path("tests", "testthat"), recursive = TRUE, showWarnings = FALSE)
+    slug <- .add_command_slug(name, subdomain)
     writeLines(
         stringr::str_glue("
         context('unit test for {fct_name}')
@@ -58,7 +57,7 @@ add_command <- function(name, subdomain){
             expect_silent({fct_name}(test_env$self))
         }})
         ", fct_name = name),
-        usethis::proj_path("tests", "testthat", paste0("test-", name), ext = "R")
+        usethis::proj_path("tests", "testthat", paste0("test-", slug), ext = "R")
     )
     invisible()
 }
@@ -67,7 +66,7 @@ add_command <- function(name, subdomain){
     is.not.null <- Negate(is.null)
     `%+%` <- base::paste0
 
-    slug <- "fct" %+% "_" %+% name
-    slug <- if(is.not.null(subdomain)) "dom" %+% "_" %+% subdomain %+% "_" %+% slug
+    slug <- name
+    slug <- if(is.not.null(subdomain)) subdomain %+% "-" %+% slug
     return(slug)
 }
