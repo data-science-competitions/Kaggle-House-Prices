@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `predict_model` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family mdl subdomain
 #' @export
-predict_model <- function(self) {
+predict_model <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Feb'
+    session$month <- 'Oct'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

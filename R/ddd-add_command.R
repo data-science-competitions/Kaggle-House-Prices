@@ -21,19 +21,19 @@ add_command <- function(name, subdomain){
         stringr::str_glue("
         #' @title What the Function Does
         #' @description `{fct_name}` is an amazing function
-        #' @param self (`environment`) A shared environment.
-        #' @return self
+        #' @param session (`environment`) A shared environment.
+        #' @return session
         #' @family {subdomain} subdomain
         #' @export
-        {fct_name} <- function(self) {{
+        {fct_name} <- function(session) {{
             # Assertions ...
-            stopifnot(is.environment(self))
+            stopifnot(is.environment(session))
 
             # Code ...
-            self$month <- '{month}'
+            session$month <- '{month}'
 
             # Return
-            invisible(self)
+            invisible(session)
         }}", fct_name = name, subdomain = subdomain %||% "", month = sample(month.abb, 1)),
         usethis::proj_path("R", slug, ext = "R")
     )

@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `store_data` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family dao subdomain
 #' @export
-store_data <- function(self) {
+store_data <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Jan'
+    session$month <- 'Oct'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

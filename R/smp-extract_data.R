@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `extract_data` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family smp subdomain
 #' @export
-extract_data <- function(self) {
+extract_data <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Apr'
+    session$month <- 'Oct'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

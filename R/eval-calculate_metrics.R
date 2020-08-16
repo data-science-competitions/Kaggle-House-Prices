@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `calculate_metrics` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family eval subdomain
 #' @export
-calculate_metrics <- function(self) {
+calculate_metrics <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Apr'
+    session$month <- 'May'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

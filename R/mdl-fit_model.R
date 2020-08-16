@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `fit_model` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family mdl subdomain
 #' @export
-fit_model <- function(self) {
+fit_model <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Feb'
+    session$month <- 'Jul'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

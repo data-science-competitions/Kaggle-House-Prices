@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `ingest_data` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family dao subdomain
 #' @export
-ingest_data <- function(self) {
+ingest_data <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Feb'
+    session$month <- 'Aug'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `create_experiment` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family expt subdomain
 #' @export
-create_experiment <- function(self) {
+create_experiment <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Sep'
+    session$month <- 'Apr'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

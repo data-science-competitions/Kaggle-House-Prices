@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `log_model` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family mdl subdomain
 #' @export
-log_model <- function(self) {
+log_model <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Nov'
+    session$month <- 'Mar'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

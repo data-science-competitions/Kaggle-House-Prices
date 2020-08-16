@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `collate_predictions` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family eval subdomain
 #' @export
-collate_predictions <- function(self) {
+collate_predictions <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Sep'
+    session$month <- 'Jul'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

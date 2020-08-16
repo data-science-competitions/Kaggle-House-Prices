@@ -1,16 +1,16 @@
 #' @title What the Function Does
 #' @description `log_metrics` is an amazing function
-#' @param self (`environment`) A shared environment.
-#' @return self
+#' @param session (`environment`) A shared environment.
+#' @return session
 #' @family eval subdomain
 #' @export
-log_metrics <- function(self) {
+log_metrics <- function(session) {
     # Assertions ...
-    stopifnot(is.environment(self))
+    stopifnot(is.environment(session))
 
     # Code ...
-    self$month <- 'Jan'
+    session$month <- 'Nov'
 
     # Return
-    invisible(self)
+    invisible(session)
 }

@@ -1,14 +1,14 @@
 # configure session -------------------------------------------------------
 pkgload::load_all(export_all = FALSE, helpers = FALSE)
-self <- new.env()
-self %>%
+session <- new.env()
+session %>%
     get_configurations() %>%
     create_experiment()
 # session configured ------------------------------------------------------
 
 
 # acquire data ------------------------------------------------------------
-self %>%
+session %>%
     ingest_data() %>%
     prepare_data() %>%
     store_data()
@@ -16,14 +16,14 @@ self %>%
 
 
 # sample data -------------------------------------------------------------
-self %>%
+session %>%
     extract_data() %>%
     split_data()
 # data sampled ------------------------------------------------------------
 
 
 # train model -------------------------------------------------------------
-self %>%
+session %>%
     initialize_model() %>%
     fit_model() %>%
     predict_model() %>%
@@ -33,7 +33,7 @@ self %>%
 
 
 # Evaluate Model ----------------------------------------------------------
-self %>%
+session %>%
     predict_test_set() %>%
     collate_predictions() %>%
     calculate_metrics() %>%
