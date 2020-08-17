@@ -25,11 +25,11 @@ Suggests:
     devtools (>= 2.0.2),
     testthat (>= 2.0.1)
 Imports:
+    assertive,
     DBI,
     RSQLite,
     R6,
     config (>= 0.3),
-    assertthat (>= 0.2.1),
     yaml,
     usethis,
     stringr,
