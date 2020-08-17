@@ -26,6 +26,8 @@ Suggests:
     testthat (>= 2.0.1)
 Imports:
     assertive,
+    dbplyr, 
+    dplyr,
     DBI,
     RSQLite,
     R6,
@@ -34,3 +36,4 @@ Imports:
     usethis,
     stringr,
     withr
+    
