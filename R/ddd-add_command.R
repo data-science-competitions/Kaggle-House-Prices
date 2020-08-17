@@ -49,12 +49,12 @@ add_command <- function(name, subdomain){
         # Setup -------------------------------------------------------------------
         testthat::setup({{
             assign('test_env', testthat::test_env(), envir = parent.frame())
-            test_env$self <- new.env()
+            test_env$session <- new.env()
         }})
 
         # General -----------------------------------------------------------------
         test_that('{fct_name} works', {{
-            expect_silent({fct_name}(test_env$self))
+            expect_silent({fct_name}(test_env$session))
         }})
         ", fct_name = name),
         usethis::proj_path("tests", "testthat", paste0("test-", slug), ext = "R")

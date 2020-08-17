@@ -9,7 +9,7 @@ ingest_data <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Aug'
+    session$month <- 'May'
 
     # Return
     invisible(session)

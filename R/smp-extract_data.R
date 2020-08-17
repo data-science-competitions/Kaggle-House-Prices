@@ -9,7 +9,7 @@ extract_data <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Oct'
+    session$month <- 'Jan'
 
     # Return
     invisible(session)

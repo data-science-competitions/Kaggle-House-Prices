@@ -9,7 +9,7 @@ finalize_model <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Aug'
+    session$month <- 'Dec'
 
     # Return
     invisible(session)
