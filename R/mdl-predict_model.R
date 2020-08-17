@@ -9,7 +9,7 @@ predict_model <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Oct'
+    session$month <- 'Sep'
 
     # Return
     invisible(session)

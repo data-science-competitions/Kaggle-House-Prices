@@ -9,7 +9,7 @@ collate_predictions <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Jul'
+    session$month <- 'Nov'
 
     # Return
     invisible(session)

@@ -9,7 +9,7 @@ fit_model <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Jul'
+    session$month <- 'Sep'
 
     # Return
     invisible(session)
