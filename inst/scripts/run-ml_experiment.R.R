@@ -34,7 +34,6 @@ session %>%
 
 # Evaluate Model ----------------------------------------------------------
 session %>%
-    predict_test_set() %>%
     collate_predictions() %>%
     calculate_metrics() %>%
     log_metrics()
