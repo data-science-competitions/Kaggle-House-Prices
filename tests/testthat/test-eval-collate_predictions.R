@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('collate_predictions works', {
-    expect_silent(collate_predictions(test_env$session))
+    attach(test_env)
+    expect_silent(collate_predictions(session))
 })

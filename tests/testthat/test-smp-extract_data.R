@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('extract_data works', {
-    expect_silent(extract_data(test_env$session))
+    attach(test_env)
+    expect_silent(extract_data(session))
 })

@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('prepare_data works', {
-    expect_silent(prepare_data(test_env$session))
+    attach(test_env)
+    expect_silent(prepare_data(session))
 })

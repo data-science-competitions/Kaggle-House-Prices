@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('log_model works', {
-    expect_silent(log_model(test_env$session))
+    attach(test_env)
+    expect_silent(log_model(session))
 })

@@ -9,7 +9,7 @@ split_data <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Apr'
+    session$month <- 'Feb'
 
     # Return
     invisible(session)

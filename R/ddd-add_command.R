@@ -54,7 +54,8 @@ add_command <- function(name, subdomain){
 
         # General -----------------------------------------------------------------
         test_that('{fct_name} works', {{
-            expect_silent({fct_name}(test_env$session))
+            attach(test_env)
+            expect_silent({fct_name}(session))
         }})
         ", fct_name = name),
         usethis::proj_path("tests", "testthat", paste0("test-", slug), ext = "R")

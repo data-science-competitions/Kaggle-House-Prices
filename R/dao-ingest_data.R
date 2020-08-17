@@ -5,12 +5,11 @@
 #' @family dao subdomain
 #' @export
 ingest_data <- function(session) {
-    # Assertions ...
     stopifnot(is.environment(session))
 
-    # Code ...
-    session$month <- 'May'
+    session$con <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
+    dplyr::copy_to(session$con, house.prices::test_set, "test_set", overwrite = TRUE)
+    dplyr::copy_to(session$con, house.prices::train_set, "train_set", overwrite = TRUE)
 
-    # Return
     invisible(session)
 }

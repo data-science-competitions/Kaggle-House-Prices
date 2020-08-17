@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('split_data works', {
-    expect_silent(split_data(test_env$session))
+    attach(test_env)
+    expect_silent(split_data(session))
 })

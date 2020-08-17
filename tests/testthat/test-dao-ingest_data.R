@@ -8,5 +8,13 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('ingest_data works', {
-    expect_silent(ingest_data(test_env$session))
+    attach(test_env)
+    expect_silent(ingest_data(session))
 })
+
+# Establish DB Connection --------------------------------------------------
+test_that('ingest_data establish db connection', {
+    attach(test_env)
+    expect_true("SQLiteConnection" %in% class(session$con))
+})
+

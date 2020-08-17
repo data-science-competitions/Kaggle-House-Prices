@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('log_metrics works', {
-    expect_silent(log_metrics(test_env$session))
+    attach(test_env)
+    expect_silent(log_metrics(session))
 })

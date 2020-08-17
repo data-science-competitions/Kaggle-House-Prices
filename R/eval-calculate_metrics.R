@@ -9,7 +9,7 @@ calculate_metrics <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Mar'
+    session$month <- 'Apr'
 
     # Return
     invisible(session)

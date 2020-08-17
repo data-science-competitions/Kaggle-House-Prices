@@ -9,7 +9,7 @@ create_experiment <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Dec'
+    session$month <- 'Nov'
 
     # Return
     invisible(session)

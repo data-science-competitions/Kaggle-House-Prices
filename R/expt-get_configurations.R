@@ -9,7 +9,7 @@ get_configurations <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Mar'
+    session$month <- 'Nov'
 
     # Return
     invisible(session)

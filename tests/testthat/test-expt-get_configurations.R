@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('get_configurations works', {
-    expect_silent(get_configurations(test_env$session))
+    attach(test_env)
+    expect_silent(get_configurations(session))
 })

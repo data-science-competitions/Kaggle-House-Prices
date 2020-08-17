@@ -9,7 +9,7 @@ log_model <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Jun'
+    session$month <- 'Apr'
 
     # Return
     invisible(session)

@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('store_data works', {
-    expect_silent(store_data(test_env$session))
+    attach(test_env)
+    expect_silent(store_data(session))
 })

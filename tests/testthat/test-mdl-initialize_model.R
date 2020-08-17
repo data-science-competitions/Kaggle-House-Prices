@@ -8,5 +8,6 @@ testthat::setup({
 
 # General -----------------------------------------------------------------
 test_that('initialize_model works', {
-    expect_silent(initialize_model(test_env$session))
+    attach(test_env)
+    expect_silent(initialize_model(session))
 })
