@@ -11,7 +11,6 @@
 ^README\.Rmd$
 ^renv\.lock$
 ^tic\.R$
-
 .*\.gitkeep$
 .*\.ini$
 .*\.md$
@@ -25,8 +24,7 @@
 ^data-raw/*
 ^inst/data/*
 ^inst/docs/*
-^renv/*
-^temp/*
+^mlruns/*
 ^public/*
 ^renv/*
 
@@ -37,4 +35,3 @@
 
 
 
-^data-raw$
