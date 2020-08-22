@@ -45,14 +45,13 @@ add_command <- function(name, subdomain = NULL, testthat_exemption = FALSE, covr
             stopifnot(is.environment(session))
 
             # Code ...
-            session$month <- '{month}'
 
             # Return
             invisible(session)
         }} {end_comments}
         ",
         fct_name = name,
-        subdomain = subdomain %||% "", month = sample(month.abb, 1),
+        subdomain = subdomain %||% "",
         start_comments = start_comments,
         end_comments = end_comments
     )

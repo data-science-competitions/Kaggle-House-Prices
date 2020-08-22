@@ -1,6 +1,6 @@
 # configure session -------------------------------------------------------
 pkgload::load_all(export_all = FALSE, helpers = FALSE)
-session <- new.env()
+session <- R6DS::RDict$new()
 session %>%
     get_configurations() %>%
     instantiate_repository() %>%

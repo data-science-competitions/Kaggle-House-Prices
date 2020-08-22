@@ -9,7 +9,6 @@ instantiate_repository <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'May'
 
     # Return
     invisible(session)
