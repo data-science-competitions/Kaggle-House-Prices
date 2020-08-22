@@ -1,6 +1,6 @@
-Package: house.prices
+Package: assessR
 Type: Package
-Title: Predict Sales Prices and Practice Feature Engineering, RFs, and Gradient Boosting
+Title: Provide Real Estate Property Valuations using Machine Learning Combined with a Database.
 URL: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
 BugReports: https://github.com/data-science-competitions/Kaggle-House-Prices/issues
 Version: 0.0.3

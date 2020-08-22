@@ -52,7 +52,7 @@ knitr::include_graphics("https://i.imgur.com/wSH8PZJ.png")
 
 ## Overview
 
-`r DESCRIPTION$get_field("Description")`
+
 
 ## Installation
 
