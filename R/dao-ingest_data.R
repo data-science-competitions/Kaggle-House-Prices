@@ -4,7 +4,7 @@
 #' @return session
 #' @family dao subdomain
 #' @export
-ingest_data <- function(session) {
+ingest_data <- function(session) { # nocov start
     stopifnot(is.environment(session))
 
     session$con <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
@@ -13,14 +13,15 @@ ingest_data <- function(session) {
     data_tests(session$con)
 
     invisible(session)
-}
+} # nocov end
 
 data_tests <- function(con){
+    assert_is_subset <- function(x, y) if(length(setdiff(x, y))) stop("x is not a subset of y")
     table_names <- c("test_set", "train_set")
     variable_names <- c("Id", "Neighborhood", "YrSold")
 
-    assertive::assert_is_subset(table_names, DBI::dbListTables(con))
-    for(table_name in table_names) assertive::assert_is_subset(variable_names, DBI::dbListFields(con, table_name))
+    assert_is_subset(table_names, DBI::dbListTables(con))
+    for(table_name in table_names) assert_is_subset(variable_names, DBI::dbListFields(con, table_name))
 
     invisible()
 }

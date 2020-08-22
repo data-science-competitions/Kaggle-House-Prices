@@ -1,10 +1,10 @@
 #' @title What the Function Does
-#' @description `fit_model` is an amazing function
+#' @description `instantiate_repository` is an amazing function
 #' @param session (`environment`) A shared environment.
 #' @return session
-#' @family mdl subdomain
+#' @family expt subdomain
 #' @export
-fit_model <- function(session) {
+instantiate_repository <- function(session) {
     # Assertions ...
     stopifnot(is.environment(session))
 

@@ -1,42 +1,62 @@
 #' @title Add Command
 #' @param name (`character`) Command name.
-#' @param subdomain (`character`) Command subdomain name.
+#' @param subdomain (`character`) Command sub-domain name.
+#' @param testthat_exemption (`logical`) Should the function be excluded from unit-testing? see \code{testthat} ref.
+#' @param covr_exemption (`logical`) Should the function be excluded from code-coverage? see \code{covr} ref.
+#' @references
+#' \href{https://testthat.r-lib.org/}{`testthat` package information}
+#' \href{https://covr.r-lib.org/}{`covr` package information}
 #' @family DDD
 #' @export
-add_command <- function(name, subdomain){
+add_command <- function(name, subdomain = NULL, testthat_exemption = FALSE, covr_exemption = testthat_exemption){
+    stopifnot(
+        is.character(name),
+        is.null(subdomain) | is.character(subdomain),
+        is.logical(testthat_exemption),
+        is.logical(covr_exemption)
+    )
 
-    .add_command_script(name, subdomain)
-    .add_command_test(name, subdomain)
+    .add_command_script(name, subdomain, covr_exemption)
+    if(!testthat_exemption) .add_command_test(name, subdomain)
 
     invisible()
 }
 
 # Low-lever Functions -----------------------------------------------------
 #' @noRd
-.add_command_script <- function(name, subdomain){
+.add_command_script <- function(name, subdomain, covr_exemption){
     `%||%` <- function(a,b) if(is.null(a)) b else a
     slug <- .add_command_slug(name, subdomain)
     dir.create(usethis::proj_path("R"), recursive = TRUE, showWarnings = FALSE)
-    writeLines(
-        stringr::str_glue("
+
+    start_comments <- ifelse(covr_exemption, "# nocov start", "")
+    end_comments <- ifelse(covr_exemption, "# nocov end", "")
+
+    content <- stringr::str_glue(
+        "
         #' @title What the Function Does
         #' @description `{fct_name}` is an amazing function
         #' @param session (`environment`) A shared environment.
         #' @return session
         #' @family {subdomain} subdomain
         #' @export
-        {fct_name} <- function(session) {{
+        {fct_name} <- function(session) {{ {start_comments}
             # Assertions ...
             stopifnot(is.environment(session))
 
             # Code ...
-            session$month <- '{month}'
 
             # Return
             invisible(session)
-        }}", fct_name = name, subdomain = subdomain %||% "", month = sample(month.abb, 1)),
-        usethis::proj_path("R", slug, ext = "R")
+        }} {end_comments}
+        ",
+        fct_name = name,
+        subdomain = subdomain %||% "",
+        start_comments = start_comments,
+        end_comments = end_comments
     )
+
+    writeLines(content, usethis::proj_path("R", slug, ext = "R"))
     invisible()
 }
 .add_command_test <- function(name, subdomain){

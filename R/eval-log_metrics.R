@@ -9,7 +9,6 @@ log_metrics <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Apr'
 
     # Return
     invisible(session)

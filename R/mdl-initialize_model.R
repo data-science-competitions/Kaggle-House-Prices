@@ -9,7 +9,6 @@ initialize_model <- function(session) {
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Sep'
 
     # Return
     invisible(session)
