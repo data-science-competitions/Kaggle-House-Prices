@@ -6,13 +6,6 @@ add_command("create_experiment", "expt")
 # experiment configured ---------------------------------------------------
 
 
-# acquire data ------------------------------------------------------------
-add_command("ingest_data", "dao")
-add_command("prepare_data", "dao")
-add_command("store_data", "dao")
-# data acquired -----------------------------------------------------------
-
-
 # sample data -------------------------------------------------------------
 add_command("extract_data", "smp")
 add_command("split_data", "smp")
