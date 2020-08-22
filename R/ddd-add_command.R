@@ -1,21 +1,23 @@
 #' @title Add Command
 #' @param name (`character`) Command name.
 #' @param subdomain (`character`) Command sub-domain name.
-#' @param covr_exemption (`logical`) Should the function be excluded while
-#'   performing code coverage test? see \code{ref}.
+#' @param testthat_exemption (`logical`) Should the function be excluded from unit-testing? see \code{testthat} ref.
+#' @param covr_exemption (`logical`) Should the function be excluded from code-coverage? see \code{covr} ref.
 #' @references
+#' \href{https://testthat.r-lib.org/}{`testthat` package information}
 #' \href{https://covr.r-lib.org/}{`covr` package information}
 #' @family DDD
 #' @export
-add_command <- function(name, subdomain = NULL, covr_exemption = FALSE){
+add_command <- function(name, subdomain = NULL, testthat_exemption = FALSE, covr_exemption = testthat_exemption){
     stopifnot(
         is.character(name),
         is.null(subdomain) | is.character(subdomain),
+        is.logical(testthat_exemption),
         is.logical(covr_exemption)
     )
 
     .add_command_script(name, subdomain, covr_exemption)
-    .add_command_test(name, subdomain)
+    if(!testthat_exemption) .add_command_test(name, subdomain)
 
     invisible()
 }
@@ -27,8 +29,8 @@ add_command <- function(name, subdomain = NULL, covr_exemption = FALSE){
     slug <- .add_command_slug(name, subdomain)
     dir.create(usethis::proj_path("R"), recursive = TRUE, showWarnings = FALSE)
 
-    start_comments <- ifelse(covr_exemption, "", "# nocov start")
-    end_comments <- ifelse(covr_exemption, "", "# nocov end")
+    start_comments <- ifelse(covr_exemption, "# nocov start", "")
+    end_comments <- ifelse(covr_exemption, "# nocov end", "")
 
     content <- stringr::str_glue(
         "

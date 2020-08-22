@@ -4,13 +4,13 @@
 #' @return session
 #' @family dao subdomain
 #' @export
-store_data <- function(session) {
+store_data <- function(session) { # nocov start
     # Assertions ...
     stopifnot(is.environment(session))
 
     # Code ...
-    session$month <- 'Sep'
+    session$month <- 'May'
 
     # Return
     invisible(session)
-}
+} # nocov end

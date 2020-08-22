@@ -4,7 +4,7 @@
 #' @return session
 #' @family dao subdomain
 #' @export
-ingest_data <- function(session) {
+ingest_data <- function(session) { # nocov start
     stopifnot(is.environment(session))
 
     session$con <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
@@ -13,7 +13,7 @@ ingest_data <- function(session) {
     data_tests(session$con)
 
     invisible(session)
-}
+} # nocov end
 
 data_tests <- function(con){
     table_names <- c("test_set", "train_set")

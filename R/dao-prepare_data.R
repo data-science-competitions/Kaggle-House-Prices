@@ -4,7 +4,7 @@
 #' @return session
 #' @family dao subdomain
 #' @export
-prepare_data <- function(session) {
+prepare_data <- function(session) { # nocov start
     # Assertions ...
     stopifnot(is.environment(session))
 
@@ -13,4 +13,4 @@ prepare_data <- function(session) {
 
     # Return
     invisible(session)
-}
+} # nocov end
