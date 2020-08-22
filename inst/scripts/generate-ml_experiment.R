@@ -2,6 +2,7 @@ pkgload::load_all(export_all = FALSE, helpers = FALSE)
 
 # configure experiment ----------------------------------------------------
 add_command("get_configurations", "expt")
+add_command("instantiate_repository", "expt")
 add_command("create_experiment", "expt")
 # experiment configured ---------------------------------------------------
 

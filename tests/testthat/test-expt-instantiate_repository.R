@@ -1,4 +1,4 @@
-context('unit test for validate_data')
+context('unit test for instantiate_repository')
 
 # Setup -------------------------------------------------------------------
 testthat::setup({
@@ -7,7 +7,7 @@ testthat::setup({
 })
 
 # General -----------------------------------------------------------------
-test_that('validate_data works', {
+test_that('instantiate_repository works', {
     attach(test_env)
-    expect_silent(validate_data(session))
+    expect_silent(instantiate_repository(session))
 })
