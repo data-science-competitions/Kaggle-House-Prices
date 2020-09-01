@@ -10,9 +10,10 @@ if(file.does_not.exist(target)) download.file(source, target)
 # Save Files --------------------------------------------------------------
 names <- c("train", "test")
 for(name in names){
+    set.seed(908)
     input <- file.path("data-raw", paste0(name, ".csv"))
     unzip(target, basename(input), exdir = dirname(input))
-    data <- readr::read_csv(input)
+    data <- readr::read_csv(input) %>% dplyr::sample_n(size = 50)
     unlink(input)
 
     assign(paste0(name, "_set"), data)
