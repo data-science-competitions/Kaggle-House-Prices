@@ -8,8 +8,30 @@ instantiate_repository <- function(session) {
     # Assertions ...
     stopifnot(is.environment(session))
 
-    # Code ...
+    repo <- .FakeReposetory(session)
 
     # Return
+    session$add("repo", repo)
     invisible(session)
 }
+
+
+# FakeReposetory (in-memory) ----------------------------------------------
+.FakeReposetory <- function(session){
+
+}
+
+# SQLReposetory -----------------------------------------------------------
+.SQLReposetory <- function(session){
+    stopifnot(session$has("conn"))
+
+    # Establish DB connection
+    session %>%
+        ingest_data() %>%
+        prepare_data() %>%
+        validate_data() %>%
+        store_data()
+
+    invisible(session)
+}
+

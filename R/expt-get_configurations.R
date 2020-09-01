@@ -8,7 +8,7 @@ get_configurations <- function(session) {
     # Assertions ...
     stopifnot(is.environment(session))
 
-    # Code ...
+    session$config <- R6DS::RDict$new()
 
     # Return
     invisible(session)
