@@ -34,8 +34,8 @@ add_command <- function(name, subdomain = NULL, testthat_exemption = FALSE, covr
 
     content <- stringr::str_glue(
         "
-        #' @title TODO: add what {fct_name} does
-        #' @description `{fct_name}` TODO: add function description.
+        #' @title What the Function Does
+        #' @description `{fct_name}` is an amazing function
         #' @param session (`environment`) A shared environment.
         #' @return session
         #' @family {subdomain} subdomain

@@ -8,11 +8,10 @@
 #' @family expt subdomain
 #' @export
 initialize_session <- function() {# nocov start
-    return <-  function(value) invisible(base::return(value))
+    session.exists <- function() "session" %in% search()
+    session.getenv <- function() rlang::search_env("session")
+    session.setenv <- function() attach(new.env(), name = "session", warn.conflicts = FALSE)
 
-    if(exists("session", envir = parent.frame())){
-        return(get0("session", envir = parent.frame()))
-    } else {
-        return(R6DS::RDict$new())
-    }
+    if(!session.exists()) session.setenv()
+    return(session.getenv())
 }# nocov end
