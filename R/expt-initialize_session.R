@@ -9,7 +9,7 @@
 #' @export
 initialize_session <- function() {# nocov start
     session.exists <- function() "session" %in% search()
-    session.getenv <- function() rlang::search_env("session")
+    session.getenv <- function() as.environment("session")
     session.setenv <- function() attach(new.env(), name = "session", warn.conflicts = FALSE)
 
     if(!session.exists()) session.setenv()

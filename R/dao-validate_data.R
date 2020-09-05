@@ -6,14 +6,14 @@
 #' @export
 validate_data <- function(session) { # nocov start
     stopifnot(is.environment(session))
-    stopifnot(is.not.null(session$con))
+    stopifnot(is.not.null(session$conn))
 
     # Setup -------------------------------------------------------------------
     # Policy
     al <- pointblank::action_levels(stop_at = 1)
     # Agents
     agent.train_set <-
-        dplyr::tbl(session$con, "train_set") %>%
+        dplyr::tbl(session$conn, "train_set") %>%
         pointblank::create_agent(name = "train_set", actions = al)
 
     # Operations --------------------------------------------------------------

@@ -12,7 +12,7 @@ ingest_data <- function(session) { # nocov start
     dplyr::copy_to(conn, house.prices::train_set, "train_set", overwrite = TRUE)
     data_tests(conn)
 
-    session$add("conn", conn)
+    session$conn <- conn
     invisible(session)
 } # nocov end
 
