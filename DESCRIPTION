@@ -3,7 +3,7 @@ Type: Package
 Title: Predict Sales Prices and Practice Feature Engineering, RFs, and Gradient Boosting
 URL: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
 BugReports: https://github.com/data-science-competitions/Kaggle-House-Prices/issues
-Version: 0.0.3
+Version: 0.0.4
 Date: 2020-04-24
 Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
