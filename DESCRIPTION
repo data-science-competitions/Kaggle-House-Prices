@@ -39,7 +39,6 @@ Imports:
     usethis,
     usethis2,
     stringr,
-    withr,
-    pointblank
+    withr
 Remotes: 
     tidylab/usethis2@develop
