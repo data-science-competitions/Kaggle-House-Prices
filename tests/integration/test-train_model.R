@@ -7,7 +7,7 @@ testthat::setup({
 })
 
 # Test --------------------------------------------------------------------
-test_that("<place holder> wroks", {
+test_that("concatenating train model commands works", {
     attach(test_env)
     expect_not_failure(instantiate_ml_task(session))
     expect_not_failure(instantiate_ml_learning_algorithm(session))

@@ -3,8 +3,3 @@ add_entity <- purrr::partial(usethis2::add_command, subdomain = "train_model", t
 add_entity("MachineLearningTask")
 add_entity("LearningAlgorithm")
 add_entity("ResamplingStrategy")
-
-
-
-
-

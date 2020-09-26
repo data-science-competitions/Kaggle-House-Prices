@@ -4,9 +4,7 @@ session <- initialize_session()
 
 
 # Establish Database Connection -------------------------------------------
-Sys.setenv(TESTTHAT = "true")
-# session %>% run_data_pipeline()
-Sys.unsetenv("TESTTHAT")
+withr::with_envvar(c("TESTTHAT" = "true"), establish_database_connection(session))
 
 
 # Train ML Model ----------------------------------------------------------
