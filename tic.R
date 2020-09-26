@@ -16,13 +16,10 @@ get_stage("before_script") %>%
     add_code_step(try(devtools::uninstall(), silent = TRUE))
 
 # Stage: Script -----------------------------------------------------------
-if(is_master_branch() | is_hotfix_branch()){
-    get_stage("script") %>% build_steps() %>% test_suite_steps()
-} else if (is_develop_branch() | is_release_branch()){
-    get_stage("script") %>% build_steps() %>% test_suite_steps()
-
-} else if (is_feature_branch()){
+if(is_master_branch() | is_hotfix_branch() | is_develop_branch() | is_release_branch()){
     get_stage("script") %>% test_suite_steps()
+} else {
+    get_stage("script") %>% unit_test_steps()
 }
 
 # Stage: After Success ----------------------------------------------------
