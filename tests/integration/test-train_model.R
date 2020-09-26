@@ -10,6 +10,6 @@ testthat::setup({
 test_that("<place holder> wroks", {
     attach(test_env)
     expect_not_failure(instantiate_ml_task(session))
-    expect_not_failure(instantiate_ml_learnering_algorithm(session))
+    expect_not_failure(instantiate_ml_learning_algorithm(session))
     expect_not_failure(instantiate_ml_resampling_strategy(session))
 })
