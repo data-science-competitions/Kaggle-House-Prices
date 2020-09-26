@@ -5,16 +5,15 @@
 #' @family train_model subdomain
 #' @export
 instantiate_ml_task <- function(session) { # nocov start
-    stopifnot(is.environment(session))
-    attach(.instantiate_ml_task, warn.conflicts = FALSE)
-    on.exit(detach(.instantiate_ml_task))
+    stopifnot(is.environment(session), is.not.null(session$conn))
 
-    # Code ...
+    session$ml_task <- MachineLearningTask(
+        id = "house-prices",
+        backend = DBI::dbReadTable(session$conn, "train_set"),
+        target = "SalePrice",
+        extra_args = list()
+    )
 
     # Return
     invisible(session)
 } # nocov end
-
-# Steps -------------------------------------------------------------------
-.instantiate_ml_task <- new.env()
-.instantiate_ml_task$dummy_step <- function(...) NULL

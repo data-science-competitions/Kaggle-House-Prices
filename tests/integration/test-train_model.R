@@ -3,7 +3,9 @@ context("integration test for train model phase")
 # Setup -------------------------------------------------------------------
 testthat::setup({
     assign("test_env", testthat::test_env(), envir = parent.frame())
-    test_env$session <- initialize_session()
+    test_env$session <-
+        initialize_session() %>%
+        establish_database_connection()
 })
 
 # Test --------------------------------------------------------------------
