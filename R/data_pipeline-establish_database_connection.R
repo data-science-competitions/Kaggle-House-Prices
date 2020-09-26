@@ -1,11 +1,13 @@
-#' @title What the Function Does
-#' @description `ingest_data` is an amazing function
+#' @title TODO: Write What the Function Does
+#' @description  TODO: Write description for`establish_database_connection`.
 #' @param session (`environment`) A shared environment.
 #' @return session
-#' @family dao subdomain
+#' @family data_pipeline subdomain
 #' @export
-ingest_data <- function(session) { # nocov start
+establish_database_connection <- function(session) { # nocov start
     stopifnot(is.environment(session))
+    attach(.establish_database_connection, warn.conflicts = FALSE)
+    on.exit(detach(.establish_database_connection))
 
     conn <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
     dplyr::copy_to(conn, house.prices::test_set, "test_set", overwrite = TRUE)
@@ -16,7 +18,9 @@ ingest_data <- function(session) { # nocov start
     invisible(session)
 } # nocov end
 
-data_tests <- function(conn){
+# Steps -------------------------------------------------------------------
+.establish_database_connection <- new.env()
+.establish_database_connection$data_tests <- function(conn){
     assert_is_subset <- function(x, y) if(length(setdiff(x, y))) stop("x is not a subset of y")
     table_names <- c("test_set", "train_set")
     variable_names <- c("Id", "Neighborhood", "YrSold")

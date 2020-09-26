@@ -1,32 +1,59 @@
 # R Package Development: Core --------------------------------------------------
-FROM rocker/tidyverse:4.0.0
+FROM rocker/rstudio:4.0.2
 
 # Setup ------------------------------------------------------------------------
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     dos2unix \
     libcurl4-openssl-dev \
     libssl-dev \
+	libxt-dev \
     libxml2-dev \
+    libcairo2-dev \
+    libsqlite-dev \
+    libmariadbd-dev \
+    libmariadbclient-dev \
     libpq-dev \
+	libsodium-dev \
+    libssh2-1-dev \
+    libsasl2-dev \
+    unixodbc-dev \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Configure RStudio Server -----------------------------------------------------
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
-RUN touch .Renviron .Rprofile
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-09-15\'
+RUN touch .env .Rprofile
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
-RUN R -q -e "remotes::install_cran(c('profvis', 'renv'))"
-RUN R -q -e "remotes::install_cran(c('devtools', 'testthat', 'covr', 'roxygen2'))"
+RUN echo "require(remotes)" >> .Rprofile
+
+RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
+RUN R -q -e "update_packages(upgrade  = 'always')"
+
+RUN R -q -e "install_cran(c('profvis', 'renv'))"
+RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2'))"
+RUN R -q -e "install_cran(('tinytex')); tinytex::install_tinytex()"
 
 # Install Project Dependencies -------------------------------------------------
+RUN R -q -e "install_cran('pointblank', dependencies = TRUE)"
+RUN R -q -e "install_cran('mlr3learners', dependencies = TRUE)"
+RUN R -q -e "install_cran('mlr3verse', dependencies = TRUE)"
 COPY ./DESCRIPTION ./DESCRIPTION
-RUN R -q -e "remotes::install_deps(dependencies = 'Depends')"
-RUN R -q -e "remotes::install_deps(dependencies = 'Imports')"
-RUN R -q -e "remotes::install_deps(dependencies = 'Suggests')"
+RUN R -q -e "install_deps(dependencies = 'Depends')"
+RUN R -q -e "install_deps(dependencies = 'Imports')"
+RUN R -q -e "install_deps(dependencies = 'Suggests')"
 
 # Run RStudio Server -----------------------------------------------------------
-RUN mv .Renviron home/rstudio/
+ENV HOME /home/rstudio
+ENV R_USER /home/rstudio
+RUN printenv >> .env
+RUN cp .env home/rstudio/.Renviron
 RUN chown rstudio:rstudio home/rstudio/
 ENV PASSWORD 1234
 ENV ROOT true
+
+# Run Rproject -----------------------------------------------------------------
+RUN touch .env .Rprofile
+RUN echo "try(setwd('./rproject'))" >> .Rprofile
+RUN echo "try(source('.Rprofile'))" >> .Rprofile
+RUN cp .Rprofile home/rstudio/.Rprofile

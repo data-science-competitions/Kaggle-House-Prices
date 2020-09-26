@@ -11,7 +11,7 @@ build_steps <- function(stage){
 test_suite_steps <- function(stage){
     stage %>%
         unit_test_steps() %>%
-        component_test_steps()
+        integration_test_steps()
 }
 
 unit_test_steps <- function(stage){
@@ -21,13 +21,13 @@ unit_test_steps <- function(stage){
         add_code_step(testthat::test_dir("./tests/testthat", stop_on_failure = TRUE))
 }
 
-component_test_steps <- function(stage){
-    if(dir.exists("./tests/component-tests"))
+integration_test_steps <- function(stage){
+    if(dir.exists("./tests/integration"))
         stage <-
             stage %>%
-            add_step(step_message(c(sep(), "\n## Test: Component-Tests", sep()))) %>%
+            add_step(step_message(c(sep(), "\n## Test: Integration-Tests", sep()))) %>%
             add_code_step(devtools::load_all(export_all = FALSE)) %>%
-            add_code_step(testthat::test_dir("./tests/component-tests", stop_on_failure = TRUE))
+            add_code_step(testthat::test_dir("./tests/integration", stop_on_failure = TRUE))
     return(stage)
 }
 
