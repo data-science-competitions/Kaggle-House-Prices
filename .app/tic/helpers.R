@@ -27,7 +27,7 @@ integreation_test_steps <- function(stage){
             stage %>%
             add_step(step_message(c(sep(), "\n## Test: Integration-Tests", sep()))) %>%
             add_code_step(devtools::load_all(export_all = FALSE)) %>%
-            add_code_step(testthat::test_dir("./tests/integreation", stop_on_failure = TRUE))
+            add_code_step(testthat::test_dir("./tests/integration", stop_on_failure = TRUE))
     return(stage)
 }
 
