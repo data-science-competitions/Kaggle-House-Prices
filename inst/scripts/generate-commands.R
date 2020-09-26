@@ -10,6 +10,8 @@ add_command <- purrr::partial(usethis2::add_command, subdomain = "train_model", 
 add_command("instantiate_ml_task")
 add_command("instantiate_ml_learning_algorithm")
 add_command("instantiate_ml_resampling_strategy")
+add_command("instantiate_ml_workflow_container")
+add_command("create_ml_workflow")
 
 
 
