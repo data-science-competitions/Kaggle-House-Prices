@@ -15,6 +15,6 @@ instantiate_ml_task <- function(session) { # nocov start
     )
 
     # Return
-    session$events$push(ObjectCreated("MachineLearningTask"))
+    session$events$push(events$ObjectCreated("MachineLearningTask"))
     invisible(session)
 } # nocov end
