@@ -39,6 +39,7 @@ Imports:
     usethis2,
     stringr,
     withr,
-    purrr
+    purrr,
+    logger
 Remotes: 
     tidylab/usethis2@develop
