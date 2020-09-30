@@ -1,3 +1,6 @@
+context('unit test for domain events')
+
+
 test_that("Event class exists", {
   expect_is(Event$new(), "Event")
 })
