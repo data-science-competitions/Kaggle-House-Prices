@@ -1,5 +1,6 @@
 # Domain Events -----------------------------------------------------------
 #' @title Domain Event Class
+#' @export
 Event <- R6::R6Class(
     "Event", lock_objects = FALSE,
     public = list(
@@ -18,6 +19,10 @@ Event <- R6::R6Class(
         }
     )
 )
+
+#' @title Events Depository
+#' @noRd
+#' @export
 events <- new.env()
 
 
