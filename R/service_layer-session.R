@@ -26,6 +26,7 @@ initialize_session <- function() {# nocov start
 
     while(session.exists()) session.del()
     session.set()
+    .session$session.add("events", R6DS::RStack$new())
 
     return(session.get())
 }# nocov end
@@ -38,5 +39,4 @@ initialize_session <- function() {# nocov start
 .session$session.get <- function() as.environment("session")
 .session$session.del <- function() detach("session", unload = TRUE, force = TRUE)
 .session$session.set <- function() attach(new.env(), name = "session", warn.conflicts = FALSE)
-
-
+.session$session.add <- function(key, value) assign(key, value, envir = .session$session.get())

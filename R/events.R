@@ -19,8 +19,12 @@ Event <- R6::R6Class(
     )
 )
 
+
 # Data Pipeline Events ----------------------------------------------------
-#' @title Fail to establish database connection
-#' @param status_code (`integer`) HTTP status codes.
-#' @references \href{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}{List of HTTP status codes}
-FailedToEstablishConnection <- function(status_code = integer(0)) Event$new(status_code = status_code)
+FailedToEstablishConnection <- function(status_code = integer(0)) Event$new(event = "FailedToEstablishConnection", status_code = status_code)
+
+
+# Train Model Events ------------------------------------------------------
+ObjectCreated <- function(class = char(0)) Event$new(event = "ObjectCreated", class = class)
+
+
