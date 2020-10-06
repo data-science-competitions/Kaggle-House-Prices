@@ -1,8 +1,14 @@
+################################################################################
+## Domain-Model Classes
+################################################################################
 # Machine Learning Task ---------------------------------------------------
 #' @title Regression Task
+#' @details Factory Class
+#' @field events Domain-event queue.
 #' @inheritParams mlr3::TaskRegr
 #' @seealso \link[mlr3]{TaskRegr}
 #' @family train_model subdomain
+#' @return Machine Learning Task object
 #' @export
 MachineLearningTask <- function(id, backend, target, extra_args = list()){
     MachineLearningTask <- R6::R6Class(inherit = mlr3::TaskRegr)

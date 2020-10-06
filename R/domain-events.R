@@ -10,6 +10,7 @@ Event <- R6::R6Class(
         #' @param value (`?`) Element value.
         set = function(key, value) {self[[key]] <- value},
         #' @description Initialize new event
+        #' @param event (`character`) Event name
         #' @param ... key-value pairs, e.g. first_name = "Bilbo".
         initialize = function(event, ...) {
             stopifnot(isFALSE(missing(event)))
