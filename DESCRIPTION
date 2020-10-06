@@ -40,6 +40,6 @@ Imports:
     stringr,
     withr,
     purrr,
-    logger
+    lgr
 Remotes: 
     tidylab/usethis2@develop
