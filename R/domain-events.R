@@ -11,10 +11,14 @@ Event <- R6::R6Class(
         set = function(key, value) {self[[key]] <- value},
         #' @description Initialize new event
         #' @param ... key-value pairs, e.g. first_name = "Bilbo".
-        initialize = function(...) {
+        initialize = function(event, ...) {
+            stopifnot(isFALSE(missing(event)))
+
+            self$event <- event
+            self$timestamp <- Sys.time()
+
             args <- unlist(list(...))
             for(i in seq_len(length(args))){
-                self$timestamp <- Sys.time()
                 do.call(self$set, args = list(key = names(args[i]), value = unname(args[i])))
             }
         }
@@ -26,6 +30,9 @@ Event <- R6::R6Class(
 #' @noRd
 #' @export
 events <- new.env()
+
+events$MachineLearningTaskCreated <- function()
+    Event$new(event = "MachineLearningTaskCreated")
 
 events$FailedToEstablishConnection <- function(status_code = integer(0))
     Event$new(event = "FailedToEstablishConnection", status_code = status_code)
