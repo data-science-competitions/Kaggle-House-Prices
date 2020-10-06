@@ -16,5 +16,14 @@ test_that('calling MachineLearningTask instantiates an R6 Object', {
         ml_task <- MachineLearningTask(id = id, backend = backend, target = target),
         "R6"
     )
+
     test_env$ml_task <- ml_task
 })
+
+# Public Methods and Fields -----------------------------------------------
+test_that('has events queue', {
+    attach(test_env)
+    expect_not_null(ml_task$events)
+})
+
+

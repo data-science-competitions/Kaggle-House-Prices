@@ -5,5 +5,7 @@
 #' @family train_model subdomain
 #' @export
 MachineLearningTask <- function(id, backend, target, extra_args = list()){
-    mlr3::TaskRegr$new(id, backend, target, extra_args = list())
+    MachineLearningTask <- R6::R6Class(inherit = mlr3::TaskRegr)
+    MachineLearningTask$set("public", "events", R6DS::RQueue$new())
+    MachineLearningTask$new(id, backend, target, extra_args = list())
 }
