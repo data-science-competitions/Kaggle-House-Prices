@@ -42,4 +42,4 @@ Imports:
     purrr,
     lgr
 Remotes: 
-    tidylab/usethis2@develop
+    tidylab/ddd@develop
